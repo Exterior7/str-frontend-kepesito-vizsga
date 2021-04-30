@@ -10,7 +10,7 @@ import { Movie } from '../model/movie';
 })
 export class MovieListComponent implements OnInit {
 
-  apiUrl: string = "https://tr360-frontend-exam-april.azurewebsites.net/exterior7/movies";
+  BASE_URL: string = "https://tr360-frontend-exam-april.azurewebsites.net/exterior7/movies";
 
   movies: Movie[] = [];
 
@@ -21,12 +21,16 @@ export class MovieListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getMovies(id: number): Observable<Movie> {
-    return this.http.get<Movie>(`${this.apiUrl}/${id}`);
+  getMovieList(): void {
+    this.http.get<Movie[]>(`${this.BASE_URL}`).subscribe(
+      list => this.movieList.next(list)
+    );
   }
 
-  deleteMovie(id: number): Observable<Movie> {
-    return this.http.delete<Movie>(`${this.apiUrl}/${id}`);
+  deleteMovie(movie: Movie): void {
+    this.http.delete<Movie>(`${this.BASE_URL}/${movie.id}`).subscribe(
+      () => this.getMovieList()
+    )
   }
 
 }

@@ -24,7 +24,7 @@
       </div>
     </div>
     <div>
-      <button [disabled]="mForm.invalid" class="btn btn-warning">Save</button>
+      <button (click)="saveMovie(mForm)" [disabled]="mForm.invalid" class="btn btn-warning">Save</button>
     </div>
     <div>
       <small class="text-danger">Fill all field to save!</small>
