@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Movie } from '../model/movie';
 
 @Component({
@@ -8,15 +10,23 @@ import { Movie } from '../model/movie';
 })
 export class MovieListComponent implements OnInit {
 
+  apiUrl: string = "https://tr360-frontend-exam-april.azurewebsites.net/exterior7/movies";
+
   movies: Movie[] = [];
 
-  constructor() { }
+  constructor(
+    private http:HttpClient,
+  ) { }
 
   ngOnInit(): void {
   }
 
-  getMovies(): void {}
+  getMovies(id: number): Observable<Movie> {
+    return this.http.get<Movie>(`${this.apiUrl}/${id}`);
+  }
 
-  deleteMovie(id: number): any {}
+  deleteMovie(id: number): Observable<Movie> {
+    return this.http.delete<Movie>(`${this.apiUrl}/${id}`);
+  }
 
 }
