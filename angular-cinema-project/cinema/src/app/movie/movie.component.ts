@@ -12,6 +12,8 @@ export class MovieComponent implements OnInit {
   @ViewChild('mForm', { static: true }) movieForm: FormGroup;
   movie: Movie = new Movie();
 
+
+
   constructor() {
 
   }
@@ -20,7 +22,7 @@ export class MovieComponent implements OnInit {
   }
 
   saveMovie(): any {
-    return {};
+    console.log('movie');
   }
 
 }
