@@ -6,17 +6,19 @@
             <th>Title</th>
             <th>Year</th>
             <th>Category</th>
-            <th></th>
+            <th>
+              <button (click)="getMovies(movies)" id="get-button"></button>
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr class="table-row"></tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>
-            <button></button>
-          </th>
+          <tr *ngFor="let movie of movies" class="table-row"></tr>
+            <th>{{ movie.title }}</th>
+            <th>{{ movie.year }}</th>
+            <th> {{movie.Category}} </th>
+            <th>
+              <button id="delete-button">Delete</button>
+            </th>
         </tbody>
     </table>
 </section>
